@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="">
+      <title>Aluguel de Imóveis</title>
+      <!-- Bootstrap core CSS -->
+      <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <link href="{% static 'lib/bootstrap/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <!-- Custom styles for this template -->
+      <link href="{% static 'lib/bootstrap/css/carousel.css' %}" rel="stylesheet">
+      <link href="{% static 'css/home.css' %}" rel="stylesheet">
+   </head>
+   <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">ImovelWeb</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav pull-right">
+                <li><a href="#">Anunciar</a></li>
+                <li><a href="#">Entrar</a></li>
+              </ul>
+            </div>
+
+            <!--/.navbar-collapse -->
+         </div>
+      </nav>
+      <div id="myCarousel" class="carousel">
+         <div class="carousel-inner" role="listbox">
+            <div class="item active">
+               <img class="" src="{% static 'img/home-room.png' %}" alt="">
+               <div class="container">
+                  <div id="search-box-home" class="carousel-caption">
+                     <h1>Encontre o imóvel dos seus sonhos</h1>
+                     <div class="row center-block">
+                        <div class="col-md-12">
+                           <form>
+                              <div class="col-md-2 ">
+                                 <select class="form-control">
+                                    <option>Comprar</option>
+                                    <option>Alugar</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-2 ">
+                                 <select class="form-control">
+                                    <option>Todos</option>
+                                    <option>Casa</option>
+                                    <option>Apartamento</option>
+                                    <option>Flat</option>
+                                    <option>Cobertura</option>
+                                    <option>Kitnet</option>
+                                    <option>Sobrado</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-6 ">
+                                 <input type="text" class="form-control col-md-12" id="" placeholder="Digite sua cidade...">
+                              </div>
+                              <div class="col-md-2 ">
+                                 <button type="submit" class="btn btn-success col-md-12">Buscar</button>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container marketing">
+         <div class="row suggestions-row">
+            <div class="col-md-5 col-md-offset-4">
+               <h2>Algumas sugestões para você</h2>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-lg-4">
+               <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+               <h4>Apartamento 4 quartos, 68 m2</h4>
+               <ul class="list-unstyled">
+                  <li>Salvador - Ba</li>
+                  <li>Horto Florestal</li>
+                  <li>2 vagas</li>
+                  <li>3 banheiros</li>
+               </ul>
+               <p><a class="btn btn-default" href="#" role="button">Ver detalhes »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+               <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+               <h4>Apartamento 4 quartos, 68 m2</h4>
+               <ul class="list-unstyled">
+                  <li>Salvador - Ba</li>
+                  <li>Horto Florestal</li>
+                  <li>2 vagas</li>
+                  <li>3 banheiros</li>
+               </ul>
+               <p><a class="btn btn-default" href="#" role="button">Ver detalhes »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+               <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+               <h4>Apartamento 4 quartos, 68 m2</h4>
+               <ul class="list-unstyled">
+                  <li>Salvador - Ba</li>
+                  <li>Horto Florestal</li>
+                  <li>2 vagas</li>
+                  <li>3 banheiros</li>
+               </ul>
+               <p><a class="btn btn-default" href="#" role="button">Ver detalhes »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+            <div class="col-lg-4">
+               <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+               <h4>Apartamento 4 quartos, 68 m2</h4>
+               <ul class="list-unstyled">
+                  <li>Salvador - Ba</li>
+                  <li>Horto Florestal</li>
+                  <li>2 vagas</li>
+                  <li>3 banheiros</li>
+               </ul>
+               <p><a class="btn btn-default" href="#" role="button">Ver detalhes »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+               <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+               <h4>Apartamento 4 quartos, 68 m2</h4>
+               <ul class="list-unstyled">
+                  <li>Salvador - Ba</li>
+                  <li>Horto Florestal</li>
+                  <li>2 vagas</li>
+                  <li>3 banheiros</li>
+               </ul>
+               <p><a class="btn btn-default" href="#" role="button">Ver detalhes »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+               <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+               <h4>Apartamento 4 quartos, 68 m2</h4>
+               <ul class="list-unstyled">
+                  <li>Salvador - Ba</li>
+                  <li>Horto Florestal</li>
+                  <li>2 vagas</li>
+                  <li>3 banheiros</li>
+               </ul>
+               <p><a class="btn btn-default" href="#" role="button">Ver detalhes »</a></p>
+            </div>
+            <!-- /.col-lg-4 -->
+         </div>
+         <!-- /.row -->
+         <div class="row want-box">
+            <div class="col-md-12">
+               <div class="col-md-3 col-md-offset-3">
+                  <a class="btn center-block btn-info btn-lg" href="#" role="button">Eu quero comprar</a>
+               </div>
+               <div class="col-md-3">
+                  <a class="btn center-block btn-info btn-lg" href="#" role="button">Eu quero alugar</a>
+               </div>
+            </div>
+         </div>
+         <hr class="featurette-divider">
+         <div class="row">
+            <h2 class="text-center">Encontre o imóvel dos sonhos na sua cidade</h2>
+            <br><br>
+         </div>
+         <div class="row cities-row">
+            <div class="col-md-4">
+               <ul class="list-unstyled text-center">
+                  <li><a href="#">Maceió</a></li>
+                  <li><a href="#">Macapá</a></li>
+                  <li><a href="#">Manaus</a></li>
+                  <li><a href="#">Salvador</a></li>
+                  <li><a href="#">Fortaleza</a></li>
+                  <li><a href="#">Brasília</a></li>
+                  <li><a href="#">Vitória</a></li>
+                  <li><a href="#">Goiânia</a></li>
+                  <li><a href="#">São Luís</a></li>
+               </ul>
+            </div>
+            <div class="col-md-4">
+               <ul class="list-unstyled text-center">
+                  <li><a href="#">Cuiabá</a></li>
+                  <li><a href="#">Campo Grande</a></li>
+                  <li><a href="#">Belo Horizonte</a></li>
+                  <li><a href="#">Belém</a></li>
+                  <li><a href="#">João Pessoa</a></li>
+                  <li><a href="#">Curitiba</a></li>
+                  <li><a href="#">Recife</a></li>
+                  <li><a href="#">Teresina</a></li>
+                  <li><a href="#">Boa Vista</a></li>
+               </ul>
+            </div>
+            <div class="col-md-4">
+               <ul class="list-unstyled text-center">
+                  <li><a href="#">Porto Velho</a></li>
+                  <li><a href="#">Rio de Janeiro</a></li>
+                  <li><a href="#">Natal</a></li>
+                  <li><a href="#">Porto Alegre</a></li>
+                  <li><a href="#">Florianópolis</a></li>
+                  <li><a href="#">São Paulo</a></li>
+                  <li><a href="#">Aracaju</a></li>
+                  <li><a href="#">Palmas</a></li>
+               </ul>
+            </div>
+         </div>
+         <hr class="featurette-divider">
+         <footer>
+            <p class="pull-right"><a href="#">Topo</a></p>
+            <p>© 2017 ImovelWeb, Inc. · <a href="#">Privacidade</a> · <a href="#">Termos</a></p>
+         </footer>
+      </div>
+      <!-- /.container -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+   </body>
+</html>
