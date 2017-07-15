@@ -10,7 +10,7 @@
       <link rel="icon" href="">
       <title>Aluguel de Imóveis</title>
       <!-- Bootstrap core CSS -->
-      <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'lib/bootswatch/css/bootswatch.min.css' %}" rel="stylesheet">
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <link href="{% static 'lib/bootstrap/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,7 +23,7 @@
       <link href="{% static 'css/home.css' %}" rel="stylesheet">
    </head>
    <body>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container">
             <div class="navbar-header">
                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -54,13 +54,13 @@
                      <div class="row center-block">
                         <div class="col-md-12">
                            <form>
-                              <div class="col-md-2 ">
+                              <div class="col-md-2 joint">
                                  <select class="form-control">
                                     <option>Comprar</option>
                                     <option>Alugar</option>
                                  </select>
                               </div>
-                              <div class="col-md-2 ">
+                              <div class="col-md-2 joint">
                                  <select class="form-control">
                                     <option>Todos</option>
                                     <option>Casa</option>
@@ -71,10 +71,10 @@
                                     <option>Sobrado</option>
                                  </select>
                               </div>
-                              <div class="col-md-6 ">
+                              <div class="col-md-6 joint">
                                  <input type="text" class="form-control col-md-12" id="" placeholder="Digite sua cidade...">
                               </div>
-                              <div class="col-md-2 ">
+                              <div class="col-md-2 joint">
                                  <button type="submit" class="btn btn-success col-md-12">Buscar</button>
                               </div>
                            </form>
@@ -85,6 +85,7 @@
             </div>
          </div>
       </div>
+
       <div class="container marketing">
          <div class="row suggestions-row">
             <div class="col-md-5 col-md-offset-4">
@@ -172,14 +173,31 @@
          <div class="row want-box">
             <div class="col-md-12">
                <div class="col-md-3 col-md-offset-3">
-                  <a class="btn center-block btn-info btn-lg" href="#" role="button">Eu quero comprar</a>
+                  <a class="btn center-block btn-primary btn-lg" href="#" role="button">Eu quero comprar</a>
                </div>
                <div class="col-md-3">
-                  <a class="btn center-block btn-info btn-lg" href="#" role="button">Eu quero alugar</a>
+                  <a class="btn center-block btn-primary btn-lg" href="#" role="button">Eu quero alugar</a>
                </div>
             </div>
          </div>
-         <hr class="featurette-divider">
+
+      </div>
+
+      <div id="home-broker-call">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <h2 class="text-center">Corretor? Anuncie já!</h2>
+
+                      <div class="col-md-6 col-md-offset-3">
+                        <a class="btn center-block btn-primary btn-lg" href="#" role="button">Anunciar</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+       <div id="cities-container" class="container marketing">
          <div class="row">
             <h2 class="text-center">Encontre o imóvel dos sonhos na sua cidade</h2>
             <br><br>
@@ -187,42 +205,45 @@
          <div class="row cities-row">
             <div class="col-md-4">
                <ul class="list-unstyled text-center">
-                  <li><a href="#">Maceió</a></li>
-                  <li><a href="#">Macapá</a></li>
-                  <li><a href="#">Manaus</a></li>
-                  <li><a href="#">Salvador</a></li>
-                  <li><a href="#">Fortaleza</a></li>
-                  <li><a href="#">Brasília</a></li>
-                  <li><a href="#">Vitória</a></li>
-                  <li><a href="#">Goiânia</a></li>
-                  <li><a href="#">São Luís</a></li>
+                <li><a href="#">Aracaju</a></li>
+                <li><a href="#">Belo Horizonte</a></li>
+                <li><a href="#">Belém</a></li>
+                <li><a href="#">Boa Vista</a></li>
+                <li><a href="#">Brasília</a></li>
+                <li><a href="#">Campo Grande</a></li>
+                <li><a href="#">Cuiabá</a></li>
+                <li><a href="#">Curitiba</a></li>
+                <li><a href="#">Florianópolis</a></li>
                </ul>
             </div>
+
             <div class="col-md-4">
                <ul class="list-unstyled text-center">
-                  <li><a href="#">Cuiabá</a></li>
-                  <li><a href="#">Campo Grande</a></li>
-                  <li><a href="#">Belo Horizonte</a></li>
-                  <li><a href="#">Belém</a></li>
-                  <li><a href="#">João Pessoa</a></li>
-                  <li><a href="#">Curitiba</a></li>
-                  <li><a href="#">Recife</a></li>
-                  <li><a href="#">Teresina</a></li>
-                  <li><a href="#">Boa Vista</a></li>
+                <li><a href="#">Fortaleza</a></li>
+                <li><a href="#">Goiânia</a></li>
+                <li><a href="#">João Pessoa</a></li>
+                <li><a href="#">Macapá</a></li>
+                <li><a href="#">Maceió</a></li>
+                <li><a href="#">Manaus</a></li>
+                <li><a href="#">Natal</a></li>
+                <li><a href="#">Palmas</a></li>
+                <li><a href="#">Porto Alegre</a></li>
                </ul>
             </div>
-            <div class="col-md-4">
+
+             <div class="col-md-4">
                <ul class="list-unstyled text-center">
-                  <li><a href="#">Porto Velho</a></li>
-                  <li><a href="#">Rio de Janeiro</a></li>
-                  <li><a href="#">Natal</a></li>
-                  <li><a href="#">Porto Alegre</a></li>
-                  <li><a href="#">Florianópolis</a></li>
-                  <li><a href="#">São Paulo</a></li>
-                  <li><a href="#">Aracaju</a></li>
-                  <li><a href="#">Palmas</a></li>
+                <li><a href="#">Porto Velho</a></li>
+                <li><a href="#">Recife</a></li>
+                <li><a href="#">Rio de Janeiro</a></li>
+                <li><a href="#">Salvador</a></li>
+                <li><a href="#">São Luís</a></li>
+                <li><a href="#">São Paulo</a></li>
+                <li><a href="#">Teresina</a></li>
+                <li><a href="#">Vitória</a></li>
                </ul>
             </div>
+
          </div>
          <hr class="featurette-divider">
          <footer>
