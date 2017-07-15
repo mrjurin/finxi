@@ -84,6 +84,7 @@ class Address(models.Model):
     number = models.CharField('Número', max_length=5, blank=True, null=True)
     city = models.ForeignKey('catalog.City', verbose_name='Cidade')
     postalCode = models.CharField('CEP', max_length=10, blank=True, null=True)
+    neighborhood = models.CharField('Bairro', max_length=30)
 
 
 class City(models.Model):
