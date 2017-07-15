@@ -5,6 +5,9 @@ from django.db import models
 
 class RealEstate(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    address = models.ForeignKey('catalog.Address', verbose_name='Localização')
+    seller = models.ForeignKey('catalog.Seller', verbose_name='Anunciante')
+
     LAND = 'L'
     HOUSE = 'H'
     APARTMENT = 'A'
@@ -19,9 +22,18 @@ class RealEstate(models.Model):
         (PENTHOUSE, 'Terreno'),
         (KITNET, 'Kitnet'),
     )
+
+    SELL = 'S'
+    RENT = 'R'
+    TRANSACTION_TYPES = (
+        (SELL, 'Venda'),
+        (RENT, 'Aluguel')
+    )
+
     title = models.CharField(max_length=255)
     description = models.TextField()
     type = models.CharField('Tipo', max_length=1, choices=TYPES)
+    transactionType = models.CharField('Tipo de Operação', max_length=1, choices=TRANSACTION_TYPES)
     area = models.IntegerField('Área')
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
     tax = models.DecimalField('IPTU', decimal_places=2, max_digits=8)
@@ -32,8 +44,6 @@ class RealEstate(models.Model):
     numberOfCarParks = models.IntegerField('Vagas')
     sold = models.BooleanField('Vendido', default=False)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
-    address = models.ForeignKey('catalog.Address', verbose_name='Localização')
-    seller = models.ForeignKey('catalog.Seller', verbose_name='Anunciante')
 
     class Meta:
         verbose_name = 'Imóvel'
