@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block custom_css %}
+    <link href="{% static 'css/real-state-list.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="col-md-4">
+        teste
+    </div>
+
+    <div class="col-md-8">
+        <div class="row">
+
+            <div class="panel panel-default real-state-component">
+{#              <div class="panel-heading">#}
+{#                <h3 class="panel-title">Panel title</h3>#}
+{#              </div>#}
+              <div class="panel-body">
+                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                       alt="Generic placeholder image" width="140" height="140">
+                Panel content
+              </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class RealEstateListView(TemplateView):
+    template_name = 'catalog/real_estate_list.html'
