@@ -2,8 +2,20 @@ from django.contrib import admin
 from .models import RealEstate, Seller, State, Contact, Address, City
 
 
+class ContactInLine(admin.TabularInline):
+    model = Contact
+    extra = 1
+
+
+class SpeakerModelAdmin(admin.ModelAdmin):
+    inlines = [ContactInLine]
+
+    list_display = ['name', 'photo_img', 'website_link', 'email', 'phone']
+
+
 class RealEstateAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type', 'price', 'sold', 'address', 'created_at')
+    list_display = ('title', 'transactionType', 'type', 'sellPrice', 'rentPrice', 'sold', 'address', 'created_at')
+    exclude = ('sold', 'sold_at')
 
 
 class SellerAdmin(admin.ModelAdmin):
