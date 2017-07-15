@@ -50,7 +50,7 @@ class RealEstate(models.Model):
     )
 
     seller = models.ForeignKey('catalog.Seller', verbose_name='Anunciante')
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=50)
     description = models.TextField()
     sellPrice = models.DecimalField('Preço de Venda', decimal_places=2, max_digits=10, null=True, blank=True)
     rentPrice = models.DecimalField('Aluguel', decimal_places=2, max_digits=8, null=True, blank=True)
