@@ -190,7 +190,7 @@
                       <h2 class="text-center">Corretor? Anuncie já!</h2>
 
                       <div class="col-md-6 col-md-offset-3">
-                        <a class="btn center-block btn-primary btn-lg" href="#" role="button">Anunciar</a>
+                        <a class="btn center-block btn-success btn-lg" href="#" role="button">Anunciar</a>
                       </div>
                   </div>
               </div>
@@ -203,47 +203,15 @@
             <br><br>
          </div>
          <div class="row cities-row">
-            <div class="col-md-4">
-               <ul class="list-unstyled text-center">
-                <li><a href="#">Aracaju</a></li>
-                <li><a href="#">Belo Horizonte</a></li>
-                <li><a href="#">Belém</a></li>
-                <li><a href="#">Boa Vista</a></li>
-                <li><a href="#">Brasília</a></li>
-                <li><a href="#">Campo Grande</a></li>
-                <li><a href="#">Cuiabá</a></li>
-                <li><a href="#">Curitiba</a></li>
-                <li><a href="#">Florianópolis</a></li>
-               </ul>
-            </div>
-
-            <div class="col-md-4">
-               <ul class="list-unstyled text-center">
-                <li><a href="#">Fortaleza</a></li>
-                <li><a href="#">Goiânia</a></li>
-                <li><a href="#">João Pessoa</a></li>
-                <li><a href="#">Macapá</a></li>
-                <li><a href="#">Maceió</a></li>
-                <li><a href="#">Manaus</a></li>
-                <li><a href="#">Natal</a></li>
-                <li><a href="#">Palmas</a></li>
-                <li><a href="#">Porto Alegre</a></li>
-               </ul>
-            </div>
-
-             <div class="col-md-4">
-               <ul class="list-unstyled text-center">
-                <li><a href="#">Porto Velho</a></li>
-                <li><a href="#">Recife</a></li>
-                <li><a href="#">Rio de Janeiro</a></li>
-                <li><a href="#">Salvador</a></li>
-                <li><a href="#">São Luís</a></li>
-                <li><a href="#">São Paulo</a></li>
-                <li><a href="#">Teresina</a></li>
-                <li><a href="#">Vitória</a></li>
-               </ul>
-            </div>
-
+             {% for city_list in grouped_cities %}
+                 <div class="col-md-4">
+                    <ul class="list-unstyled text-center">
+                        {% for city in city_list %}
+                            <li><a href="#">{{ city }}</a></li>
+                        {% endfor %}
+                    </ul>
+                 </div>
+             {% endfor %}
          </div>
          <hr class="featurette-divider">
          <footer>
