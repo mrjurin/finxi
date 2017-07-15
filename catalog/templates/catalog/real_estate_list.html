@@ -10,26 +10,75 @@
 {% block content %}
 
 <div class="container">
+
+
     <div class="col-md-4">
-        teste
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+              <li><a href="#">ImovelWeb</a></li>
+              <li class="active">Compra</li>
+            </ol>
+        </div>
     </div>
 
     <div class="col-md-8">
+        <div class="row breadcrumb available-info">
+            <p><b>100</b> Imóveis disponíveis no Brasil</p>
+        </div>
+
+
+        {% for real_estate in object_list %}
         <div class="row">
 
-            <div class="panel panel-default real-state-component">
-{#              <div class="panel-heading">#}
-{#                <h3 class="panel-title">Panel title</h3>#}
-{#              </div>#}
-              <div class="panel-body">
-                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                       alt="Generic placeholder image" width="140" height="140">
-                Panel content
-              </div>
-            </div>
+            <div class="row real-state-component">
+                <div class="col-md-3 real-state-component-image-box">
+                    <img class="pull-left" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                       alt="Generic placeholder image" width="200" height="200">
+                </div>
+                <div class="col-md-9 real-state-info">
+                    <small class="text-muted">{{ real_estate.address.street }}, {{ real_estate.address.number }} - {{ real_estate.address.neighborhood }}, {{ real_estate.address.city }} - {{ real_estate.address.city.state }}</small>
+                    <h4><b>{{ real_estate.title }}</b></h4>
+                    <small class="pull-left">{{ real_estate.description | truncatechars:180}}</small>
 
+                    <div class="row pull-left col-md-12 center-block real-state-details">
+                        <div class="col-md-2 real-state-mini-info">
+                            <div class="row text-center"><small><b>Área m²</b></small></div>
+                            <div class="row text-center">{{ real_estate.area }}</div>
+                        </div>
+
+                        <div class="col-md-2 real-state-mini-info">
+                            <div class="row text-center"><small><b>Quartos</b></small></div>
+                            <div class="row text-center">{{ real_estate.numberOfRooms }}</div>
+                        </div>
+
+                        <div class="col-md-2 real-state-mini-info">
+                            <div class="row text-center"><small><b>Suítes</b></small></div>
+                            <div class="row text-center">{{ real_estate.numberOfSuites }}</div>
+                        </div>
+
+                        <div class="col-md-2 real-state-mini-info">
+                            <div class="row text-center"><small><b>Banheiros</b></small></div>
+                            <div class="row text-center">{{ real_estate.numberOfBathrooms }}</div>
+                        </div>
+
+                        <div class="col-md-2 real-state-mini-info">
+                            <div class="row text-center"><small><b>Vagas</b></small></div>
+                            <div class="row text-center">{{ real_estate.numberOfCarParks }}</div>
+                        </div>
+                    </div>
+
+                    <div class="row pull-left">
+                        <div class="col-md-12">
+                            <a class="btn btn-warning btn-sm" href="#" role="button">Ver detalhes »</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
+
+
 </div>
 
 {% endblock %}
