@@ -7,130 +7,130 @@
 {% endblock %}
 
 {% block content %}
-<div id="searchSection" class="carousel">
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img class="" src="{% static 'img/home-room.png' %}" alt="">
-            <div class="container">
-                <div id="search-box-home" class="carousel-caption">
-                    <h1>Encontre o imóvel dos seus sonhos</h1>
-                    <div class="row center-block">
-                        <div class="col-md-12">
-                            <form>
-                                <div class="col-md-2 joint">
-                                    <select class="form-control">
-                                        <option>Comprar</option>
-                                        <option>Alugar</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 joint">
-                                    <select class="form-control">
-                                        <option>Todos</option>
-                                        <option>Casa</option>
-                                        <option>Apartamento</option>
-                                        <option>Flat</option>
-                                        <option>Cobertura</option>
-                                        <option>Kitnet</option>
-                                        <option>Sobrado</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 joint">
-                                    <input type="text" class="form-control col-md-12" id=""
-                                           placeholder="Digite sua cidade...">
-                                </div>
-                                <div class="col-md-2 joint">
-                                    <button type="submit" class="btn btn-success col-md-12">Buscar</button>
-                                </div>
-                            </form>
+    <div id="searchSection" class="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="" src="{% static 'img/home-room.png' %}" alt="">
+                <div class="container">
+                    <div id="search-box-home" class="carousel-caption">
+                        <h1>Encontre o imóvel dos seus sonhos</h1>
+                        <div class="row center-block">
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="col-md-2 joint">
+                                        <select class="form-control">
+                                            <option>Comprar</option>
+                                            <option>Alugar</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 joint">
+                                        <select class="form-control">
+                                            <option>Todos</option>
+                                            <option>Casa</option>
+                                            <option>Apartamento</option>
+                                            <option>Flat</option>
+                                            <option>Cobertura</option>
+                                            <option>Kitnet</option>
+                                            <option>Sobrado</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 joint">
+                                        <input type="text" class="form-control col-md-12" id=""
+                                               placeholder="Digite sua cidade...">
+                                    </div>
+                                    <div class="col-md-2 joint">
+                                        <button type="submit" class="btn btn-success col-md-12">Buscar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container marketing">
-    <div class="row suggestions-row">
-        <div class="col-md-5 col-md-offset-4">
-            <h2>Algumas sugestões para você</h2>
+    <div class="container marketing">
+        <div class="row suggestions-row">
+            <div class="col-md-5 col-md-offset-4">
+                <h2>Algumas sugestões para você</h2>
+            </div>
+        </div>
+
+        {% for grouped_properties in grouped_real_estates %}
+            <div class="row">
+                <h4>{{ real_estate.title }}</h4>
+                {% for real_estate in grouped_properties %}
+                    <div class="col-lg-4">
+                        <img class="img-thumbnail"
+                             src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                             alt="Generic placeholder image" width="140" height="140">
+                        <h4>{{ real_estate.title }}</h4>
+                        <ul class="list-unstyled">
+                            <li>{{ real_estate.address.city }} - {{ real_estate.address.city.state.abbreviation }}</li>
+                            <li>{{ real_estate.address.neighborhood }}</li>
+                            <li>{{ real_estate.area }} m²</li>
+                            <li>{{ real_estate.numberOfRooms }} quartos</li>
+
+                            {% if real_estate.numberOfCarParks > 0 %}
+                                <li>{{ real_estate.numberOfCarParks }} {% if real_estate.numberOfCarParks == 1 %}
+                                    vaga{% else %}vagas{% endif %} de garagem
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <p><a class="btn btn-warning" href="{{ real_estate.get_absolute_url }}" role="button">Ver
+                            detalhes »</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <!-- /.row -->
+        <div class="row want-box">
+            <div class="col-md-12">
+                <div class="col-md-3 col-md-offset-3">
+                    <a class="btn center-block btn-primary btn-lg" href="{% url 'list_real_state_buy' %}" role="button">Eu
+                        quero comprar</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn center-block btn-primary btn-lg" href="{% url 'list_real_state_rent' %}"
+                       role="button">Eu quero alugar</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="home-broker-call">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center">Corretor? Anuncie já!</h2>
+
+                    <div class="col-md-6 col-md-offset-3">
+                        <a class="btn center-block btn-success btn-lg" href="#" role="button">Anunciar</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    {% for grouped_properties in grouped_real_estates %}
+    <div id="cities-container" class="container marketing">
         <div class="row">
-            <h4>{{ real_estate.title }}</h4>
-            {% for real_estate in grouped_properties %}
-                <div class="col-lg-4">
-                    <img class="img-thumbnail"
-                         src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                         alt="Generic placeholder image" width="140" height="140">
-                    <h4>{{ real_estate.title }}</h4>
-                    <ul class="list-unstyled">
-                        <li>{{ real_estate.address.city }} - {{ real_estate.address.city.state.abbreviation }}</li>
-                        <li>{{ real_estate.address.neighborhood }}</li>
-                        <li>{{ real_estate.area }} m²</li>
-                        <li>{{ real_estate.numberOfRooms }} quartos</li>
-
-                        {% if real_estate.numberOfCarParks > 0 %}
-                            <li>{{ real_estate.numberOfCarParks }} {% if real_estate.numberOfCarParks == 1  %}vaga{% else %}vagas{% endif %} de garagem</li>
-                        {% endif %}
+            <h2 class="text-center">Encontre o imóvel dos sonhos na sua cidade</h2>
+            <br><br>
+        </div>
+        <div class="row cities-row">
+            {% for city_list in grouped_cities %}
+                <div class="col-md-4">
+                    <ul class="list-unstyled text-center">
+                        {% for city in city_list %}
+                            <li><a href="{{ city.get_search_url }}">{{ city }}</a></li>
+                        {% endfor %}
                     </ul>
-                    <p><a class="btn btn-warning" href="{{ real_estate.get_absolute_url }}" role="button">Ver detalhes »</a></p>
                 </div>
             {% endfor %}
         </div>
-    {% endfor %}
-
-    <!-- /.row -->
-    <div class="row want-box">
-        <div class="col-md-12">
-            <div class="col-md-3 col-md-offset-3">
-                <a class="btn center-block btn-primary btn-lg" href="{% url 'list_real_state_buy' %}" role="button">Eu quero comprar</a>
-            </div>
-            <div class="col-md-3">
-                <a class="btn center-block btn-primary btn-lg" href="{% url 'list_real_state_rent' %}" role="button">Eu quero alugar</a>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div id="home-broker-call">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center">Corretor? Anuncie já!</h2>
-
-                <div class="col-md-6 col-md-offset-3">
-                    <a class="btn center-block btn-success btn-lg" href="#" role="button">Anunciar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="cities-container" class="container marketing">
-    <div class="row">
-        <h2 class="text-center">Encontre o imóvel dos sonhos na sua cidade</h2>
-        <br><br>
-    </div>
-    <div class="row cities-row">
-        {% for city_list in grouped_cities %}
-            <div class="col-md-4">
-                <ul class="list-unstyled text-center">
-                    {% for city in city_list %}
-                        <li><a href="{{ city.get_search_url }}">{{ city }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endfor %}
-    </div>
-    <hr class="featurette-divider">
-    <footer>
-        <p class="pull-right"><a href="#">Topo</a></p>
-        <p>© 2017 ImovelWeb, Inc. · <a href="#">Privacidade</a> · <a href="#">Termos</a></p>
-    </footer>
-</div><!-- /.container -->
+    </div><!-- /.container -->
 
 {% endblock %}

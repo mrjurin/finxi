@@ -2,56 +2,43 @@ body {
     background-color: #efefef;
 }
 
-ol.breadcrumb {
+.contact-seller-box {
+    margin-top: 20px;
     background-color: white;
+    padding: 24px;
 }
 
-.panel-body {
-    padding: 0;
+.contact-seller-box textarea {
+    width: 238px;
 }
 
-.real-state-component {
-    border:none;
-    background-color: white;
-    padding-left: 0;
-    margin: 25px 0;
-}
-
-.real-state-component .real-state-component-image-box {
+.real-state-details {
+    margin: 20px 0;
     padding-left: 0;
 }
 
-.real-state-component .real-state-info {
+.real-state-price-details {
+    margin-top: 25px;
+    padding-left: 5px;
+}
+
+.recommentation-box {
+    margin-top: 60px;
+    margin-left: 0px;
     padding-left: 30px;
-    padding-right: 0;
 }
 
-.real-state-component .real-state-info .real-state-details {
-    margin-top: 10px;
-    margin-bottom: 12px;
-    padding-left: 0;
+.recommentation-box .real-state-info {
+    margin-left: -20px;
 }
 
-.real-state-component .real-state-info .real-state-details .real-state-mini-info {
-    margin-right: 5px;
-    padding-left: 0;
-}
-
-.available-info {
-    font-size: 20px;
+.recommentation-box .real-state-recommendation {
+    margin-bottom: 20px;
     background-color: white;
-    text-transform: none;
-}
-
-.available-info p {
-    margin: 0;
-}
-
-.bread-box {
     padding-left: 0;
 }
 
-.bread-box .col-md-12 {
-    padding-left: 0;
-}
+.recommentation-box .recommendation-see-more-box a {
+    margin-top: 10px;
 
+}

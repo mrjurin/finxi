@@ -1,10 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block custom_css %}
+    <link href="{% static 'css/real-state-show.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-9">
+                    <div class="col-md-12">
+                        <h3>{{ real_estate.title }}</h3>
+                        <p>{{ real_estate.address }}</p>
+
+                        {% if real_estate.sold %}
+                            <div class="alert alert-warning">
+                                <p><b>Atenção:</b> Este imóvel não está mais disponível.</p>
+                            </div>
+                        {% endif %}
+                        <hr>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item">
+                                    <img alt="First slide [900x500]"
+                                         data-src="holder.js/900x500/auto/#777:#555/text:First slide"
+                                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM1NTUvdGV4dDpGaXJzdCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1ZDRkMjAxZmVjIHRleHQgeyBmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTVkNGQyMDFmZWMiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNzc3Ii8+PGc+PHRleHQgeD0iMzA4LjI5Njg3NSIgeT0iMjcwLjEiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L2c+PC9zdmc+"
+                                         data-holder-rendered="true">
+                                </div>
+
+                                <div class="item active left">
+                                    <img alt="Second slide [900x500]"
+                                         data-src="holder.js/900x500/auto/#666:#444/text:Second slide"
+                                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM0NDQvdGV4dDpTZWNvbmQgc2xpZGUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ0ZDFmY2U0NCB0ZXh0IHsgZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDRkMWZjZTQ0Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI2NC45NTMxMjUiIHk9IjI3MC4xIj5TZWNvbmQgc2xpZGU8L3RleHQ+PC9nPjwvZz48L3N2Zz4="
+                                         data-holder-rendered="true">
+                                </div>
+
+                                <div class="item next left">
+                                    <img alt="Third slide [900x500]"
+                                         data-src="holder.js/900x500/auto/#555:#333/text:Third slide"
+                                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiMzMzMvdGV4dDpUaGlyZCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1ZDRkMjAxN2ExIHRleHQgeyBmaWxsOiMzMzM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTVkNGQyMDE3YTEiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNTU1Ii8+PGc+PHRleHQgeD0iMjk4LjMyMDMxMjUiIHk9IjI3MC4xIj5UaGlyZCBzbGlkZTwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
+                                         data-holder-rendered="true">
+                                </div>
+                            </div>
+
+                            <a href="#carousel-example-generic" class="left carousel-control" role="button"
+                               data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+
+                            <a href="#carousel-example-generic" class="right carousel-control" role="button"
+                               data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div> <!-- .col-md-12 -->
+
+                    <div class="col-md-12 center-block real-state-price-details">
+                        <div class="col-md-4">
+                            <ul class="list-unstyled">
+                                {% if real_estate.sell_price %}
+                                    <li><b>Preço de venda:</b> R$ {{ real_estate.sell_price }}</li>
+                                {% endif %}
+
+                                {% if real_estate.rent_price %}
+                                    <li><b>Preço de aluguel:</b> R$ {{ real_estate.rent_price }}</li>
+                                {% endif %}
+
+                                {% if real_estate.condo_price %}
+                                    <li><b>Condomínio:</b> R$ {{ real_estate.condo_price }}</li>
+                                {% endif %}
+
+                                {% if real_estate.tax %}
+                                    <li><b>IPTU:</b> R$ {{ real_estate.tax }}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 center-block real-state-details">
+
+                        <div class="col-md-2">
+                            <div class="row text-center">
+                                <small><b>Tipo</b></small>
+                            </div>
+                            <div class="row text-center">Apartamento</div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="row text-center">
+                                <small><b>Área m²</b></small>
+                            </div>
+                            <div class="row text-center">{{ real_estate.area }}</div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="row text-center">
+                                <small><b>Quartos</b></small>
+                            </div>
+                            <div class="row text-center">{{ real_estate.number_of_rooms }}</div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="row text-center">
+                                <small><b>Banheiros</b></small>
+                            </div>
+                            <div class="row text-center">{{ real_estate.number_of_bathrooms }}</div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="row text-center">
+                                <small><b>Suítes</b></small>
+                            </div>
+                            <div class="row text-center">{{ real_estate.number_of_suites }}</div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="row text-center">
+                                <small><b>Vagas</b></small>
+                            </div>
+                            <div class="row text-center">{{ real_estate.number_of_car_parks }}</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        {{ real_estate.description }}
+                    </div>
+                </div>
+
+                <div class="col-md-3 contact-seller-box">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <legend>Fale agora com o anunciante</legend>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Nome">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control" id="inputEmail"
+                                           placeholder="nome@exemplo.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="5"
+                                              id="textArea">Olá, tenho interesse neste imóvel: {{ real_estate.title }}, {{ real_estate.address }}. Aguardo o contato. Obrigado.
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success col-md-12">Contactar anunciante
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+                </div>
+            </div>
+        </div>
+
+        {% if recommendations.count > 0 %}
+            <div class="row recommentation-box">
+                <h4>Você também pode gostar:</h4>
+
+                {% for real_estate_r in recommendations %}
+                    <div class="col-md-8 real-state-recommendation">
+                        <div class="row">
+                            <div class="col-md-3 real-state-component-image-box">
+                                <img class="pull-left"
+                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                                     alt="Generic placeholder image" width="150" height="150">
+                            </div>
+                            <div class="col-md-9 real-state-info">
+                                <small class="text-muted">{{ real_estate_r.address.street }}, {{ real_estate_r.address.number }}
+                                    - {{ real_estate_r.address.neighborhood }}, {{ real_estate_r.address.city }}
+                                    - {{ real_estate_r.address.city.state }}</small>
+                                <h4><b>{{ real_estate_r.title }}</b></h4>
+                                <small class="pull-left">{{ real_estate_r.description | truncatechars:180 }}</small>
+
+                                <div class="row recommendation-see-more-box">
+                                    <div class="col-md-12">
+                                        <a class="btn btn-warning btn-sm" href="{{ real_estate_r.get_absolute_url }}"
+                                           role="button">Ver detalhes »</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}
