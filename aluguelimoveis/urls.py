@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from catalog.views import RealEstateListView
+from catalog.views import RealEstateBuyListView, RealEstateRentListView
 from core.views import HomePageView
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
-    url(r'^comprar/$', RealEstateListView.as_view(), name='real_state_list'),
+    url(r'^comprar/$', RealEstateBuyListView.as_view(), name='real_state_buy_list'),
+    url(r'^alugar/$', RealEstateRentListView.as_view(), name='real_state_rent_list'),
     url(r'^admin/', admin.site.urls),
 ]

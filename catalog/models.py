@@ -2,6 +2,19 @@ import uuid
 
 from django.db import models
 
+# Transaction Types
+SELL = 'S'
+RENT = 'R'
+ANY = 'A'
+
+# Real Estate Types
+LAND = 'L'
+HOUSE = 'H'
+APARTMENT = 'A'
+FLAT = 'F'
+PENTHOUSE = 'P'
+KITNET = 'K'
+
 
 class Address(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -18,12 +31,6 @@ class Address(models.Model):
 class RealEstate(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-    LAND = 'L'
-    HOUSE = 'H'
-    APARTMENT = 'A'
-    FLAT = 'F'
-    PENTHOUSE = 'P'
-    KITNET = 'K'
     TYPES = (
         (LAND, 'Terreno'),
         (HOUSE, 'Casa'),
@@ -34,9 +41,6 @@ class RealEstate(models.Model):
     )
     type = models.CharField('Tipo', max_length=1, choices=TYPES)
 
-    SELL = 'S'
-    RENT = 'R'
-    ANY = 'A'
     TRANSACTION_TYPES = (
         (SELL, 'Venda'),
         (RENT, 'Aluguel'),
@@ -122,6 +126,9 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_search_url(self):
+        return "".format()
 
 
 class State(models.Model):

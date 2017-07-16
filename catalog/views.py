@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 
-from catalog.models import RealEstate
+from catalog.models import RealEstate, SELL, RENT
 
 
 class RealEstateListView(ListView):
@@ -9,3 +9,13 @@ class RealEstateListView(ListView):
 
     def get_queryset(self):
         return RealEstate.objects.filter(sold=False)
+
+
+class RealEstateBuyListView(RealEstateListView):
+    def get_queryset(self):
+        return RealEstate.objects.filter(sold=False).exclude(transactionType=RENT)
+
+
+class RealEstateRentListView(RealEstateListView):
+    def get_queryset(self):
+        return RealEstate.objects.filter(sold=False).exclude(transactionType=SELL)
