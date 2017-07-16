@@ -12,13 +12,20 @@
 <div class="container">
 
 
-    <div class="col-md-4">
+    <div class="col-md-4 bread-box">
         <div class="col-md-12">
-            <ol class="breadcrumb">
-              <li><a href="#">ImovelWeb</a></li>
-              <li class="active">Compra</li>
+            <ol class="breadcrumb available-info">
+              <li><a href="{% url 'home' %}">ImovelWeb</a></li>
+              <li class="active">{{ request.path | title | cut:"/" }}</li>
             </ol>
         </div>
+
+        {% if object_list.count %}
+        <div class="col-md-12">
+            teste
+        </div>
+        {% endif %}
+
     </div>
 
     <div class="col-md-8">
@@ -26,10 +33,16 @@
             <p><b>{{ object_list.count }}</b> Imóveis disponíveis no Brasil</p>
         </div>
 
+        {% if not object_list.count %}
+        <div class="row">
+            <div class="col-md-12">
+                Infelizmente não encontramos um imóvel disponível. Retorne para a <a href="{% url 'home' %}">página inicial</a> e faça uma nova pesquisa.
+            </div>
+        </div>
+        {% endif %}
 
         {% for real_estate in object_list %}
         <div class="row">
-
             <div class="row real-state-component">
                 <div class="col-md-3 real-state-component-image-box">
                     <img class="pull-left" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="

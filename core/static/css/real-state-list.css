@@ -40,10 +40,18 @@ ol.breadcrumb {
 .available-info {
     font-size: 20px;
     background-color: white;
+    text-transform: none;
 }
 
 .available-info p {
     margin: 0;
-    text-transform: none;
+}
+
+.bread-box {
+    padding-left: 0;
+}
+
+.bread-box .col-md-12 {
+    padding-left: 0;
 }
 

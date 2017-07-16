@@ -1,5 +1,5 @@
 import uuid
-
+from django.shortcuts import resolve_url as r
 from django.db import models
 
 # Transaction Types
@@ -128,7 +128,7 @@ class City(models.Model):
         return self.name
 
     def get_search_url(self):
-        return "".format()
+        return r('real_state_buy_list', state=self.state.abbreviation.lower(), slug=self.slugName)
 
 
 class State(models.Model):

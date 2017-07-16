@@ -8,14 +8,27 @@ class RealEstateListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return RealEstate.objects.filter(sold=False)
+        city_slug = self.kwargs.get('slug', None)
+        state_abbrev = self.kwargs.get('state', None)
+
+        objects = RealEstate.objects.filter(sold=False)
+        if city_slug:
+            objects = objects.filter(address__city__slugName=city_slug)
+
+        if state_abbrev:
+            objects = objects.filter(address__city__state__abbreviation__contains=state_abbrev)
+        return objects
 
 
 class RealEstateBuyListView(RealEstateListView):
     def get_queryset(self):
-        return RealEstate.objects.filter(sold=False).exclude(transactionType=RENT)
+        queryset = super().get_queryset()
+        queryset.exclude(transactionType=RENT)
+        return queryset
 
 
 class RealEstateRentListView(RealEstateListView):
     def get_queryset(self):
-        return RealEstate.objects.filter(sold=False).exclude(transactionType=SELL)
+        queryset = super().get_queryset()
+        queryset.exclude(transactionType=SELL)
+        return queryset

@@ -120,7 +120,7 @@
             <div class="col-md-4">
                 <ul class="list-unstyled text-center">
                     {% for city in city_list %}
-                        <li><a href="#">{{ city }}</a></li>
+                        <li><a href="{{ city.get_search_url }}">{{ city }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
