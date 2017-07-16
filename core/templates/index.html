@@ -76,7 +76,7 @@
                             <li>{{ real_estate.numberOfCarParks }} {% if real_estate.numberOfCarParks == 1  %}vaga{% else %}vagas{% endif %} de garagem</li>
                         {% endif %}
                     </ul>
-                    <p><a class="btn btn-warning" href="#" role="button">Ver detalhes »</a></p>
+                    <p><a class="btn btn-warning" href="{{ real_estate.get_absolute_url }}" role="button">Ver detalhes »</a></p>
                 </div>
             {% endfor %}
         </div>

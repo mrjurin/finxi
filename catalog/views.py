@@ -13,7 +13,7 @@ class RealEstateListView(ListView):
 
         objects = RealEstate.objects.filter(sold=False)
         if city_slug:
-            objects = objects.filter(address__city__slugName=city_slug)
+            objects = objects.filter(address__city__slug=city_slug)
 
         if state_abbrev:
             objects = objects.filter(address__city__state__abbreviation__contains=state_abbrev)
@@ -29,7 +29,7 @@ class RealEstateBuyListView(RealEstateListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset.exclude(transactionType=RENT)
+        queryset.exclude(transaction_type=RENT)
         return queryset
 
 
@@ -42,5 +42,5 @@ class RealEstateRentListView(RealEstateListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset.exclude(transactionType=SELL)
+        queryset.exclude(transaction_type=SELL)
         return queryset

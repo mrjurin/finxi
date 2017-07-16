@@ -21,7 +21,7 @@ class Address(models.Model):
     street = models.CharField('Endereço', max_length=255)
     number = models.CharField('Número', max_length=5, blank=True, null=True)
     city = models.ForeignKey('catalog.City', verbose_name='Cidade')
-    postalCode = models.CharField('CEP', max_length=10, blank=True, null=True)
+    postal_code = models.CharField('CEP', max_length=10, blank=True, null=True)
     neighborhood = models.CharField('Bairro', max_length=30)
 
     def __str__(self):
@@ -46,7 +46,7 @@ class RealEstate(models.Model):
         (RENT, 'Aluguel'),
         (ANY, 'Venda ou Aluguel')
     )
-    transactionType = models.CharField('Tipo de Operação', max_length=1, choices=TRANSACTION_TYPES)
+    transaction_type = models.CharField('Tipo de Operação', max_length=1, choices=TRANSACTION_TYPES)
     address = models.OneToOneField(
         Address,
         on_delete=None,
@@ -56,15 +56,15 @@ class RealEstate(models.Model):
     seller = models.ForeignKey('catalog.Seller', verbose_name='Anunciante')
     title = models.CharField(max_length=50)
     description = models.TextField()
-    sellPrice = models.DecimalField('Preço de Venda', decimal_places=2, max_digits=10, null=True, blank=True)
-    rentPrice = models.DecimalField('Aluguel', decimal_places=2, max_digits=8, null=True, blank=True)
+    sell_price = models.DecimalField('Preço de Venda', decimal_places=2, max_digits=10, null=True, blank=True)
+    rent_price = models.DecimalField('Aluguel', decimal_places=2, max_digits=8, null=True, blank=True)
     area = models.IntegerField('Área')
     tax = models.DecimalField('IPTU', decimal_places=2, max_digits=8, null=True, blank=True)
-    condoPrice = models.DecimalField('Condomínio', decimal_places=2, max_digits=8, null=True, blank=True)
-    numberOfRooms = models.IntegerField('Quartos')
-    numberOfBathrooms = models.IntegerField('Banheiros')
-    numberOfSuites = models.IntegerField('Suítes')
-    numberOfCarParks = models.IntegerField('Vagas de Garagem')
+    condo_price = models.DecimalField('Condomínio', decimal_places=2, max_digits=8, null=True, blank=True)
+    number_of_rooms = models.IntegerField('Quartos')
+    number_of_bathrooms = models.IntegerField('Banheiros')
+    number_of_suites = models.IntegerField('Suítes')
+    number_of_car_parks = models.IntegerField('Vagas de Garagem')
     sold = models.BooleanField('Vendido', default=False)
     sold_at = models.DateTimeField('Vendido em', null=True, blank=True)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
@@ -75,6 +75,9 @@ class RealEstate(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return r('show_real_estate', real_estate_id=self.id)
 
 
 # ToDo: Características: mobiliado, churrasqueira, espaço gourmet, etc..
@@ -115,7 +118,7 @@ class Contact(models.Model):
 class City(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField('Nome', max_length=80)
-    slugName = models.SlugField('Slug', unique=True)
+    slug = models.SlugField('Slug', unique=True)
     state = models.ForeignKey('catalog.State', verbose_name='Estado')
     capital = models.BooleanField(default=False)
 
@@ -128,7 +131,7 @@ class City(models.Model):
         return self.name
 
     def get_search_url(self):
-        return r('list_real_state_buy_param', state=self.state.abbreviation.lower(), slug=self.slugName)
+        return r('list_real_state_buy_param', state=self.state.abbreviation.lower(), slug=self.slug)
 
 
 class State(models.Model):

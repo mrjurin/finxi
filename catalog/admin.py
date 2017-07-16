@@ -14,7 +14,7 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 
 
 class RealEstateAdmin(admin.ModelAdmin):
-    list_display = ('title', 'transactionType', 'type', 'sellPrice', 'rentPrice', 'sold', 'address', 'created_at')
+    list_display = ('title', 'transaction_type', 'type', 'sell_price', 'rent_price', 'sold', 'address', 'created_at')
     exclude = ('sold', 'sold_at')
 
 
@@ -27,7 +27,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class AddressAdmin(admin.ModelAdmin):
-    list_display = ('street', 'number', 'city', 'postalCode')
+    list_display = ('street', 'number', 'city', 'postal_code')
 
 
 class StateAdmin(admin.ModelAdmin):
