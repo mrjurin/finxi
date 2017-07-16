@@ -111,6 +111,7 @@ class Contact(models.Model):
 class City(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField('Nome', max_length=80)
+    slugName = models.SlugField('Slug', unique=True)
     state = models.ForeignKey('catalog.State', verbose_name='Estado')
     capital = models.BooleanField(default=False)
 
