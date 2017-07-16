@@ -21,9 +21,11 @@ from core.views import HomePageView
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
-    url(r'^comprar/(?P<state>[\w]+)/(?P<slug>[\w-]+)/$', RealEstateBuyListView.as_view(), name='real_state_buy_list'),
-    url(r'^comprar/$', RealEstateBuyListView.as_view(), name='real_state_buy_list'),
-    url(r'^alugar/$', RealEstateRentListView.as_view(), name='real_state_rent_list'),
+    url(r'^comprar/(?P<state>[\w]+)/(?P<slug>[\w-]+)/$', RealEstateBuyListView.as_view(), name='list_real_state_buy_param'),
+    url(r'^comprar/$', RealEstateBuyListView.as_view(), name='list_real_state_buy'),
+
+    url(r'^alugar/(?P<state>[\w]+)/(?P<slug>[\w-]+)/$', RealEstateRentListView.as_view(), name='list_real_state_rent_param'),
+    url(r'^alugar/$', RealEstateRentListView.as_view(), name='list_real_state_rent'),
     url(r'^admin/', admin.site.urls),
 ]
 

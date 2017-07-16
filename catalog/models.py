@@ -128,7 +128,7 @@ class City(models.Model):
         return self.name
 
     def get_search_url(self):
-        return r('real_state_buy_list', state=self.state.abbreviation.lower(), slug=self.slugName)
+        return r('list_real_state_buy_param', state=self.state.abbreviation.lower(), slug=self.slugName)
 
 
 class State(models.Model):
