@@ -1,0 +1,57 @@
+body {
+    background-color: #efefef;
+}
+
+ol.breadcrumb {
+    background-color: white;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+.real-state-component {
+    border:none;
+    background-color: white;
+    padding-left: 0;
+    margin: 25px 0;
+}
+
+.real-state-component .real-state-component-image-box {
+    padding-left: 0;
+}
+
+.real-state-component .real-state-info {
+    padding-left: 30px;
+    padding-right: 0;
+}
+
+.real-state-component .real-state-info .real-state-details {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    padding-left: 0;
+}
+
+.real-state-component .real-state-info .real-state-details .real-state-mini-info {
+    margin-right: 5px;
+    padding-left: 0;
+}
+
+.available-info {
+    font-size: 20px;
+    background-color: white;
+    text-transform: none;
+}
+
+.available-info p {
+    margin: 0;
+}
+
+.bread-box {
+    padding-left: 0;
+}
+
+.bread-box .col-md-12 {
+    padding-left: 0;
+}
+
