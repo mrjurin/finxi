@@ -21,6 +21,12 @@ class RealEstateListView(ListView):
 
 
 class RealEstateBuyListView(RealEstateListView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = 'Comprar'
+        return context
+
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset.exclude(transactionType=RENT)
@@ -28,6 +34,12 @@ class RealEstateBuyListView(RealEstateListView):
 
 
 class RealEstateRentListView(RealEstateListView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = 'Alugar'
+        return context
+
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset.exclude(transactionType=SELL)
