@@ -16,19 +16,8 @@
                 <li><a href="{% url 'catalog:list_real_state_rent' %}">Alugar</a></li>
                 <li><a href="#">Anunciar</a></li>
 
-                <li><a href="#">
-                    Olá, {{ user }}
-                </a></li>
-                {% if request.user.is_anonymous %}
-                    <li><a href="#">USUÁRIO ANÔNIMO</a></li>
-                {% else %}
-                    <li><a href="#">USUÁRIO NÃO ANÔNIMO</a></li>
-                {% endif %}
-
-                {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
-                {% else %}
-                    <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'accounts:register' %}">Registrar-se</a></li>
                 {% endif %}
 
                 {% if user.is_authenticated %}
@@ -36,7 +25,7 @@
                 {% else %}
                     <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
                 {% endif %}
-                <li><a href="{% url 'accounts:register' %}">Registrar-se</a></li>
+
 
             </ul>
         </div>
