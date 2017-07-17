@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView
-
+from django.contrib.auth import get_user_model
 from catalog.models import City, RealEstate
+
+User = get_user_model()
 
 
 class HomePageView(TemplateView):

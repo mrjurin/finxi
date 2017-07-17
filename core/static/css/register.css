@@ -1,0 +1,16 @@
+.register-box {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.register-error-box {
+    margin-bottom: 20px;
+}
+
+.register-error-box small {
+    color: #d9534f;
+}
+
+.register-form-label {
+    font-size: 14px;
+}

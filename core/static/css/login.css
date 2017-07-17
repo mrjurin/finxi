@@ -1,0 +1,16 @@
+.login-box {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.login-error-box {
+    margin-bottom: 20px;
+}
+
+.login-error-box small {
+    color: #d9534f;
+}
+
+.login-form-label {
+    font-size: 14px;
+}
