@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from accounts.views import AccountsLoginView, AccountsLogoutView, RegisterView, AccountsIndexView
 
 urlpatterns = [

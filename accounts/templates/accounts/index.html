@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block custom_css %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 login-box">
+
+                {% if user.is_authenticated %}
+                    Autenticado
+                    {{ user.username }}
+                {% else %}
+                    Não tá autenticado
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

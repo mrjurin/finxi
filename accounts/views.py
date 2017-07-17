@@ -16,7 +16,7 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('index')
 
 
-class AccountsIndexView(TemplateView, LoginRequiredMixin):
+class AccountsIndexView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/index.html'
 
 
@@ -26,4 +26,3 @@ class AccountsLoginView(LoginView):
 
 class AccountsLogoutView(LogoutView):
     template_name = 'accounts/login.html'
-    next_page = '/'
