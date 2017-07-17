@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import UserAdminCreationForm
@@ -26,3 +26,13 @@ class AccountsLoginView(LoginView):
 
 class AccountsLogoutView(LogoutView):
     template_name = 'accounts/login.html'
+
+
+class UpdateUserView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'accounts/update_user.html'
+    fields = ['name', 'email']
+    success_url = reverse_lazy('accounts:index')
+
+    def get_object(self):
+        return self.request.user

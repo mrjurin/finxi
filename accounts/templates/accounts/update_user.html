@@ -1,0 +1,28 @@
+{% extends 'accounts/index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Minha conta | Editar dados{% endblock %}
+
+{% block accounts_content %}
+
+    <div class="col-md-4">
+        <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% for field in form %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                        <label class="register-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {% render_field field class="form-control" %}
+
+                        {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </fieldset>
+            <button class="btn btn-success btn-block col-md-4" type="submit">Salvar</button>
+        </form>
+    </div>
+
+{% endblock %}
