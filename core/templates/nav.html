@@ -21,6 +21,7 @@
                 {% endif %}
 
                 {% if user.is_authenticated %}
+                    <li><a href="{% url 'accounts:index' %}">Minha Conta</a></li>
                     <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
                 {% else %}
                     <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
