@@ -12,8 +12,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li><a href="{% url 'list_real_state_buy' %}">Comprar</a></li>
-                <li><a href="{% url 'list_real_state_rent' %}">Alugar</a></li>
+                <li><a href="{% url 'catalog:list_real_state_buy' %}">Comprar</a></li>
+                <li><a href="{% url 'catalog:list_real_state_rent' %}">Alugar</a></li>
                 <li><a href="#">Anunciar</a></li>
 
                 <li><a href="#">
@@ -26,16 +26,17 @@
                 {% endif %}
 
                 {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Entrar</a></li>
+                    <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
                 {% endif %}
 
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Entrar</a></li>
+                    <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
                 {% endif %}
+                <li><a href="{% url 'accounts:register' %}">Registrar-se</a></li>
 
             </ul>
         </div>

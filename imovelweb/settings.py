@@ -124,6 +124,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # AUTH
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'accounts:index'
 AUTH_USER_MODEL = 'accounts.User'
