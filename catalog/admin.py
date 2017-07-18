@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RealEstate, Seller, State, Contact, Address, City
+from .models import RealEstate, State, Contact, Address, City
 
 
 class ContactInLine(admin.TabularInline):
@@ -16,10 +16,6 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 class RealEstateAdmin(admin.ModelAdmin):
     list_display = ('title', 'transaction_type', 'type', 'sell_price', 'rent_price', 'sold', 'address', 'created_at')
     exclude = ('sold', 'sold_at')
-
-
-class SellerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'email')
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -39,7 +35,6 @@ class CityAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RealEstate, RealEstateAdmin)
-admin.site.register(Seller, SellerAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Address, AddressAdmin)

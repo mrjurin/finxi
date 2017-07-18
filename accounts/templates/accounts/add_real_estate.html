@@ -1,0 +1,191 @@
+{% extends 'accounts/index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block custom_css %}
+    <link href="{% static 'css/add_real_estate.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Minha conta | Editar dados{% endblock %}
+
+{% block accounts_content %}
+    <div id="add-real-estate-box" class="col-md-8">
+        <form class="form-horizontal" method="post" novalidate="">
+            {% csrf_token %}
+
+            <input type="hidden" name="seller_id" value="{{ user.id }}">
+            <div class="col-md-10">
+                {% for error in form.errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+            </div>
+            <div class="col-md-10">
+                {% for error in form.non_field_errors %}
+                    <small>{{ error }}</small>
+                {% endfor %}
+            </div>
+
+
+            <div class="row">
+                <h4>Preencha o endereço</h4>
+                <hr>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="{{ form.street.id_for_label }}">Rua</label>
+                        {% render_field form.street class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="{{ form.neighborhood.id_for_label }}">Bairro</label>
+                        {% render_field form.neighborhood class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="{{ form.number.id_for_label }}">Número</label>
+                        {% render_field form.number class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="{{ form.city.id_for_label }}">Cidade</label>
+                        {% render_field form.city class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="{{ form.postal_code.id_for_label }}">Código Postal</label>
+                        {% render_field form.postal_code class="form-control" %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h4>Descreva o imóvel</h4>
+                <hr>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="{{ form.type.id_for_label }}">{{ form.type.label }}</label>
+                        {% render_field form.type class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="{{ form.transaction_type.id_for_label }}">{{ form.transaction_type.label }}</label>
+                        {% render_field form.transaction_type class="form-control" %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+                {% render_field form.title class="form-control" %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+                {% render_field form.description class="form-control" %}
+            </div>
+
+            <div class="row">
+                <h4>Preencha as características</h4>
+                <hr>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="{{ form.sell_price.id_for_label }}">{{ form.sell_price.label }}</label>
+                        {% render_field form.sell_price class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="{{ form.rent_price.id_for_label }}">{{ form.rent_price.label }}</label>
+                        {% render_field form.rent_price class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="{{ form.condo_price.id_for_label }}">{{ form.condo_price.label }}</label>
+                        {% render_field form.condo_price class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="{{ form.tax.id_for_label }}">{{ form.tax.label }}</label>
+                        {% render_field form.tax class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="{{ form.area.id_for_label }}">{{ form.area.label }} m2</label>
+                        {% render_field form.area class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="{{ form.number_of_rooms.id_for_label }}">{{ form.number_of_rooms.label }}</label>
+                        {% render_field form.number_of_rooms class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="{{ form.number_of_bathrooms.id_for_label }}">{{ form.number_of_bathrooms.label }}</label>
+                        {% render_field form.number_of_bathrooms class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="{{ form.number_of_suites.id_for_label }}">{{ form.number_of_suites.label }}</label>
+                        {% render_field form.number_of_suites class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="{{ form.number_of_car_parks.id_for_label }}">{{ form.number_of_car_parks.label }}</label>
+                        {% render_field form.number_of_car_parks class="form-control" %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-success btn-block col-md-12" type="submit">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    {#    <div class="col-md-8">#}
+    {#        <form class="form-horizontal" method="post" novalidate>#}
+    {#            {% csrf_token %}#}
+    {#            <fieldset>#}
+    {#                {% for field in form %}#}
+    {#                    <div class="form-group{% if field.errors %} has-error{% endif %}">#}
+    {#                        <label class="register-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>#}
+    {#                        {% render_field field class="form-control" %}#}
+    {##}
+    {#                        {% for error in field.errors %}#}
+    {#                            <span class="help-block">{{ error }}</span>#}
+    {#                        {% endfor %}#}
+    {#                    </div>#}
+    {#                {% endfor %}#}
+    {#            </fieldset>#}
+    {#            <button class="btn btn-success btn-block col-md-4" type="submit">Salvar</button>#}
+    {#        </form>#}
+    {#    </div>#}
+
+{% endblock %}

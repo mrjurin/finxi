@@ -3,6 +3,8 @@ from django.shortcuts import resolve_url as r
 from django.db import models
 
 # Transaction Types
+from accounts.models import User
+
 SELL = 'S'
 RENT = 'R'
 ANY = 'A'
@@ -47,16 +49,13 @@ class RealEstate(models.Model):
         (ANY, 'Venda ou Aluguel')
     )
     transaction_type = models.CharField('Tipo de Operação', max_length=1, choices=TRANSACTION_TYPES)
-    address = models.OneToOneField(
-        Address,
-        on_delete=None,
-        verbose_name='Localização'
-    )
 
-    seller = models.ForeignKey('catalog.Seller', verbose_name='Anunciante')
-    title = models.CharField(max_length=50)
-    description = models.TextField()
-    sell_price = models.DecimalField('Preço de Venda', decimal_places=2, max_digits=10, null=True, blank=True)
+    address = models.ForeignKey(Address, related_name='address')
+    # seller = models.ForeignKey(User, related_name='seller', verbose_name='Anunciante')
+
+    title = models.CharField('Título', max_length=50)
+    description = models.TextField('Descrição')
+    sell_price = models.DecimalField('Venda', decimal_places=2, max_digits=10, null=True, blank=True)
     rent_price = models.DecimalField('Aluguel', decimal_places=2, max_digits=8, null=True, blank=True)
     area = models.IntegerField('Área')
     tax = models.DecimalField('IPTU', decimal_places=2, max_digits=8, null=True, blank=True)
@@ -64,7 +63,7 @@ class RealEstate(models.Model):
     number_of_rooms = models.IntegerField('Quartos')
     number_of_bathrooms = models.IntegerField('Banheiros')
     number_of_suites = models.IntegerField('Suítes')
-    number_of_car_parks = models.IntegerField('Vagas de Garagem')
+    number_of_car_parks = models.IntegerField('Vagas')
     sold = models.BooleanField('Vendido', default=False)
     sold_at = models.DateTimeField('Vendido em', null=True, blank=True)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
@@ -86,20 +85,6 @@ class RealEstate(models.Model):
 #     id = models.UUIDField(primary_key=True, default=uuid.uuid1, editable=False)
 #     path = models.CharField(max_length=255)
 #     default = models.BooleanField(default=False)
-
-
-class Seller(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid1, editable=False)
-    name = models.CharField('Nome', max_length=100)
-    surname = models.CharField('Sobrenome', max_length=100)
-    email = models.EmailField('Email')
-
-    class Meta:
-        verbose_name = 'Anunciante'
-        verbose_name_plural = 'Anunciantes'
-
-    def __str__(self):
-        return "{} {}".format(self.name, self.surname)
 
 
 class Contact(models.Model):
